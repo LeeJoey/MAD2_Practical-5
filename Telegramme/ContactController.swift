@@ -80,12 +80,12 @@ class ContactController {
     
     //Delete contact
     //fetch data based on mobileno
-    func deleteContact(mobileno:String, newContact:Contact)
+    func deleteContact(mobileno:String)
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDContact")
-        fetchRequest.predicate = NSPredicate(format: "mobileno = %@", newContact.mobileNo)
+        fetchRequest.predicate = NSPredicate(format: "mobileno = %@", mobileno)
         
         do {
             let test = try managedContext.fetch(fetchRequest)

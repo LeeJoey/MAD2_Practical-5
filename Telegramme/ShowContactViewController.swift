@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import Foundation
 
 class ShowContactViewController: UITableViewController {
     
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var controller = ContactController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         print("View did load")
         self.tableView.reloadData() //refresh data
@@ -31,14 +33,14 @@ class ShowContactViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appDelegate.contactList.count
+        return controller.retrieveAllContact().count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
         
-        let contact = appDelegate.contactList[indexPath.row]
+        let contact = controller.retrieveAllContact()[indexPath.row]
         cell.textLabel!.text = "\(contact.firstName) \(contact.lastName)"
         cell.detailTextLabel!.text = "\(contact.mobileNo)"
         return cell
@@ -48,7 +50,8 @@ class ShowContactViewController: UITableViewController {
         
         if editingStyle == .delete {
             // Delete the row from the data source
-            appDelegate.contactList.remove(at: indexPath.row)
+            let contactToBeDeleted = controller.retrieveAllContact()[indexPath.row]
+            controller.deleteContact(mobileno: contactToBeDeleted.mobileNo)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

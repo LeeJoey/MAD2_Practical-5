@@ -22,19 +22,19 @@ class UpdateContactController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        let aContact = appDelegate.contactList[rowSelected]
+        //let aContact = appDelegate.contactList[rowSelected]
         
-        fnlbl.text = "\(aContact.firstName)"
+        //fnlbl.text = "\(aContact.firstName)"
         
-        lnlbl.text = "\(aContact.lastName)"
+        //lnlbl.text = "\(aContact.lastName)"
         
-        mnlbl.text = "\(aContact.mobileNo)"
+        //mnlbl.text = "\(aContact.mobileNo)"
 
         // Do any additional setup after loading the view.
     }
     
     @IBAction func saveBtn(_ sender: Any) {
-        appDelegate.contactList[rowSelected] = Contact(firstname: fnlbl.text!, lastname: lnlbl.text!, mobileno: mnlbl.text!)
+        //appDelegate.contactList[rowSelected] = Contact(firstname: fnlbl.text!, lastname: lnlbl.text!, mobileno: mnlbl.text!)
     }
     
     

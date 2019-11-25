@@ -29,14 +29,14 @@ class AddContactViewController: UIViewController {
     @IBAction func createBtn(_ sender: Any) {
         
         if firstNameFld.text != "" && lastNameFld.text != "" && mobileFld.text != "" {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            print(String(appDelegate.contactList.count))
+            //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            //print(String(appDelegate.contactList.count))
             
+            //Create a class
             let c = Contact(firstname: firstNameFld.text!, lastname: lastNameFld.text!, mobileno: mobileFld.text!)
             
-            func AddContact() {
-                .append(c)
-            }
+            let controller = ContactController()
+            controller.AddContact(newContact:c)
         }
     }
     
