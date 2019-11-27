@@ -4,16 +4,17 @@
         <attribute name="firstname" optional="YES" attributeType="String"/>
         <attribute name="lastname" optional="YES" attributeType="String"/>
         <attribute name="mobileno" optional="YES" attributeType="String"/>
-        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="contact" inverseEntity="CDMessage"/>
+        <relationship name="lastmessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMessage"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="friend" inverseEntity="CDMessage"/>
     </entity>
     <entity name="CDMessage" representedClassName="CDMessage" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isSender" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDContact" inverseName="messages" inverseEntity="CDContact"/>
+        <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDContact" inverseName="messages" inverseEntity="CDContact"/>
     </entity>
     <elements>
-        <element name="CDContact" positionX="-81.234375" positionY="45.8671875" width="128" height="103"/>
-        <element name="CDMessage" positionX="36.39453125" positionY="247.69140625" width="128" height="103"/>
+        <element name="CDContact" positionX="-81.234375" positionY="45.8671875" width="128" height="118"/>
+        <element name="CDMessage" positionX="157.19921875" positionY="88.80859375" width="128" height="103"/>
     </elements>
 </model>
