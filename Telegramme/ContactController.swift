@@ -136,9 +136,9 @@ class FriendController {
         let entity = NSEntityDescription.entity(forEntityName: "CDMessage", in: context)!
         
         let message = NSManagedObject(entity: entity, insertInto: context)
-        message.setValue(thisMessage.date, forKeyPath: "d")
-        message.setValue(thisMessage.isSender, forKeyPath: "s")
-        message.setValue(thisMessage.text, forKeyPath: "t")
+        message.setValue(thisMessage.date, forKeyPath: "date")
+        message.setValue(thisMessage.isSender, forKeyPath: "isSender")
+        message.setValue(thisMessage.text, forKeyPath: "text")
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDContact")
         fetchRequest.predicate = NSPredicate(format: "firstname = %@", newfriend.firstName)
@@ -163,7 +163,7 @@ class FriendController {
             let list:[NSManagedObject] = try context.fetch(fetchRequest)
             for m in list{
                 let d = m.value(forKeyPath: "date") as! Date
-                let s = m.value(forKeyPath: "isSender") as! Bool
+                let s = m.value(forKeyPath: "isSender") as! DarwinBoolean
                 let t = m.value(forKeyPath: "text") as! String
                 let newMessage = Message(d: d, s: s, t: t)
                 messageList.append(newMessage)
